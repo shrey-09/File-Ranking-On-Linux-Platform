@@ -247,58 +247,7 @@ int haveChildren(struct Trie* curr)
     return 0;
 }
 
-/*// Recursive function to delete a string in Trie.
-int deletion(struct Trie* *curr, char* str)
-{
-    // return if Trie is empty
-    if (*curr == NULL)
-        return 0;
 
-    // if we have not reached the end of the string
-    if (*str)
-    {
-        // recurse for the node corresponding to next character in
-        // the string and if it returns 1, delete current node
-        // (if it is non-leaf)
-        if (*curr != NULL && (*curr)->character[*str - 'a'] != NULL &&
-            deletion(&((*curr)->character[*str - 'a']), str + 1) &&
-            (*curr)->isLeaf == 0)
-        {
-            if (!haveChildren(*curr))
-            {
-                free(*curr);
-                (*curr) = NULL;
-                return 1;
-            }
-            else {
-                return 0;
-            }
-        }
-    }
-
-    // if we have reached the end of the string
-    if (*str == '\0' && (*curr)->isLeaf)
-    {
-        // if current node is a leaf node and don't have any children
-        if (!haveChildren(*curr))
-        {
-            free(*curr); // delete current node
-            (*curr) = NULL;
-            return 1; // delete non-leaf parent nodes
-        }
-
-        // if current node is a leaf node and have children
-        else
-        {
-            // mark current node as non-leaf node (DON'T DELETE IT)
-            (*curr)->isLeaf = 0;
-            return 0;       // don't delete its parent nodes
-        }
-    }
-
-    return 0;
-}
-*/
 
 void initiateTrie(struct Trie** head)
 {
@@ -533,8 +482,8 @@ void performTfIdf(struct Trie *head,char *query)
 	printf("FileName\t:\tRelevancy\n");	
 	for(ftemp=fileList;ftemp!=NULL;ftemp = ftemp->next)
 	{
-		if(ftemp->weight!=0)
-			printf("%s\t:\t%lf\n",ftemp->fileName,ftemp->weight);
+		if(ftemp->weight!=0.00000)
+			printf("%s  \t :\t %lf\n",ftemp->fileName,ftemp->weight);
 	}
 
 	
@@ -549,8 +498,9 @@ int main()
         printf("Trie empty!!\n");               // Trie is empty now
 
     char query[4096];
-    printf("Enter a string : ");
+    printf("Search:\t");
     scanf("%[^\n]%*c",query);
+    printf("--------------------------------------------------------------------------------------\n");
     performTfIdf(head,query);
 
 return 0;
