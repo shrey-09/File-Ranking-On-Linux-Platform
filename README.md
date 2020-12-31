@@ -1,4 +1,4 @@
-# File-Ranking-On-Linux-Platform
+# Music-By-Lyrics-On-Linux
 ### Used Trie Data Structure and Linked List to fetch relavant file names according to a given string.
 
 ![](img.JPG/)
